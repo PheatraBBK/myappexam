@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:myappexam/screens/cabservice.dart';
+import 'package:myappexam/screens/consmetic.dart';
 //import 'package:myappexam/screens/fashion.dart';
 import 'package:myappexam/screens/fashion2.dart';
+import 'package:myappexam/screens/foodgrocery.dart';
+import 'package:myappexam/screens/navigator_menu.dart';
+import 'package:myappexam/screens/parcel.dart';
+import 'package:myappexam/screens/restaurants.dart';
 
 class Screen1 extends StatefulWidget {
   const Screen1({super.key});
@@ -31,7 +37,7 @@ class _Screen1State extends State<Screen1> {
             ),
           ],
         ),
-        drawer: const Drawer(),
+        drawer: const NavigatorMenu(),
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -40,19 +46,22 @@ class _Screen1State extends State<Screen1> {
                 // Banner Section
                 Container(
                   width: double.infinity,
-                  height: 150.0,
+                  // height: 150.0,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Image.asset(
-                    'assets/images/banner.jpg',
-                    width: double.infinity,
-                    height: 150,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
-                      color: Colors.grey[200],
-                      child: const Center(child: Text("Image not found")),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      'assets/images/banner.jpg',
+                      width: double.infinity,
+                      height: 200,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: Colors.grey[200],
+                        child: const Center(child: Text("Image not found")),
+                      ),
                     ),
                   ),
                 ),
@@ -124,6 +133,41 @@ class CategoryCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const Fashion2(),
+                ),
+              );
+            } else if (title.toLowerCase() == 'cosmetic') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Consmetic(),
+                ),
+              );
+            } else if (title.toLowerCase() == "restaurants") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Restaurants(),
+                ),
+              );
+            } else if (title.toLowerCase() == "cab service") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Cabservice(),
+                ),
+              );
+            } else if (title.toLowerCase() == "food grocery") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Foodgrocery(),
+                ),
+              );
+            } else if (title.toLowerCase() == "parcel") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Parcel(),
                 ),
               );
             }

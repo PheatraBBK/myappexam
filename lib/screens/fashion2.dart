@@ -33,55 +33,36 @@ class _Fashion2State extends State<Fashion2> {
           ),
         ],
       ),
+      // drawer: Drawer(),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
           // Mega Sale Banner
           Container(
-            padding: const EdgeInsets.all(16),
+            //padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              //color: Colors.blue,
               borderRadius: BorderRadius.circular(10),
             ),
-            child: const Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "MEGA SALE",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "Special Offer",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                    Text(
-                      "This weekend only",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                'assets/images/banner.jpg',
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  color: Colors.grey[200],
+                  child: const Center(child: Text("Image not found")),
                 ),
-                Spacer(),
-                Icon(Icons.local_offer, color: Colors.white, size: 40),
-              ],
+              ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 30),
 
           // Top Categories with Images
           _buildCategorySection(),
-          const SizedBox(height: 20),
+          //const SizedBox(height: 10),
 
           // New Arrivals Section with Images
           _buildSectionHeader('New Arrivals', onSeeAllPressed: () {}),
